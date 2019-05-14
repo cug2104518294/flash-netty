@@ -10,9 +10,6 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-/**
- * @author 闪电侠
- */
 public class NettyClient {
     private static final int MAX_RETRY = 5;
     private static final String HOST = "127.0.0.1";
@@ -32,6 +29,8 @@ public class NettyClient {
                 .handler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     public void initChannel(SocketChannel ch) {
+                        //ch.pipeline() 返回的是和这条连接相关的逻辑处理链，采用了责任链模式
+                        //再调用 addLast() 方法 添加一个逻辑处理器，这个逻辑处理器为的就是在客户端建立连接成功之后，向服务端写数据
                         ch.pipeline().addLast(new FirstClientHandler());
                     }
                 });
