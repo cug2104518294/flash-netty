@@ -1,11 +1,9 @@
 package the.flash.protocol.response;
 
-import lombok.Data;
 import the.flash.protocol.Packet;
 
 import static the.flash.protocol.command.Command.MESSAGE_RESPONSE;
 
-@Data
 public class MessageResponsePacket extends Packet {
 
     private String message;
@@ -14,5 +12,13 @@ public class MessageResponsePacket extends Packet {
     public Byte getCommand() {
 
         return MESSAGE_RESPONSE;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

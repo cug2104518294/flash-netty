@@ -17,9 +17,6 @@ import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-/**
- * @author 闪电侠
- */
 public class NettyClient {
     private static final int MAX_RETRY = 5;
     private static final String HOST = "127.0.0.1";
@@ -73,7 +70,6 @@ public class NettyClient {
                     System.out.println("输入消息发送至服务端: ");
                     Scanner sc = new Scanner(System.in);
                     String line = sc.nextLine();
-
                     MessageRequestPacket packet = new MessageRequestPacket();
                     packet.setMessage(line);
                     ByteBuf byteBuf = PacketCodeC.INSTANCE.encode(channel.alloc(), packet);

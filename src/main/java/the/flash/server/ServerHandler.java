@@ -12,24 +12,15 @@ import the.flash.protocol.response.MessageResponsePacket;
 
 import java.util.Date;
 
-/**
- * @author chao.yu
- * chao.yu@dianping.com
- * @date 2018/08/04 06:21.
- */
 public class ServerHandler extends ChannelInboundHandlerAdapter {
-
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         ByteBuf requestByteBuf = (ByteBuf) msg;
-
         Packet packet = PacketCodeC.INSTANCE.decode(requestByteBuf);
-
         if (packet instanceof LoginRequestPacket) {
             System.out.println(new Date() + ": 收到客户端登录请求……");
             // 登录流程
             LoginRequestPacket loginRequestPacket = (LoginRequestPacket) packet;
-
             LoginResponsePacket loginResponsePacket = new LoginResponsePacket();
             loginResponsePacket.setVersion(packet.getVersion());
             if (valid(loginRequestPacket)) {
@@ -46,7 +37,6 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         } else if (packet instanceof MessageRequestPacket) {
             // 客户端发来消息
             MessageRequestPacket messageRequestPacket = ((MessageRequestPacket) packet);
-
             MessageResponsePacket messageResponsePacket = new MessageResponsePacket();
             System.out.println(new Date() + ": 收到客户端消息: " + messageRequestPacket.getMessage());
             messageResponsePacket.setMessage("服务端回复【" + messageRequestPacket.getMessage() + "】");
