@@ -23,17 +23,14 @@ public class SessionUtil {
     }
 
     public static boolean hasLogin(Channel channel) {
-
         return channel.hasAttr(Attributes.SESSION);
     }
 
     public static Session getSession(Channel channel) {
-
         return channel.attr(Attributes.SESSION).get();
     }
 
     public static Channel getChannel(String userId) {
-
         return userIdChannelMap.get(userId);
     }
 }
