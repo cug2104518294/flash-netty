@@ -20,10 +20,6 @@ import the.flash.util.SessionUtil;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-
-/**
- * @author 闪电侠
- */
 public class NettyClient {
     private static final int MAX_RETRY = 5;
     private static final String HOST = "127.0.0.1";
@@ -45,7 +41,6 @@ public class NettyClient {
                     public void initChannel(SocketChannel ch) {
                         // 空闲检测
                         ch.pipeline().addLast(new IMIdleStateHandler());
-
                         ch.pipeline().addLast(new Spliter());
                         ch.pipeline().addLast(new PacketDecoder());
                         // 登录响应处理器
@@ -65,7 +60,6 @@ public class NettyClient {
                         // 登出响应处理器
                         ch.pipeline().addLast(new LogoutResponseHandler());
                         ch.pipeline().addLast(new PacketEncoder());
-
                         // 心跳定时器
                         ch.pipeline().addLast(new HeartBeatTimerHandler());
                     }
@@ -88,6 +82,9 @@ public class NettyClient {
                 // 本次重连的间隔
                 int delay = 1 << order;
                 System.err.println(new Date() + ": 连接失败，第" + order + "次重连……");
+                // bootstrap.config().group().schedule(), 其中 bootstrap.config() 这个方法返回的是 BootstrapConfig，
+                // 他是对 Bootstrap 配置参数的抽象，然后 bootstrap.config().group() 返回的就是我们在一开始的时候配置的线程模型 workerGroup，
+                // 调 workerGroup 的 schedule 方法即可实现定时任务逻辑
                 bootstrap.config().group().schedule(() -> connect(bootstrap, host, port, retry - 1), delay, TimeUnit
                         .SECONDS);
             }
@@ -98,7 +95,6 @@ public class NettyClient {
         ConsoleCommandManager consoleCommandManager = new ConsoleCommandManager();
         LoginConsoleCommand loginConsoleCommand = new LoginConsoleCommand();
         Scanner scanner = new Scanner(System.in);
-
         new Thread(() -> {
             while (!Thread.interrupted()) {
                 if (!SessionUtil.hasLogin(channel)) {

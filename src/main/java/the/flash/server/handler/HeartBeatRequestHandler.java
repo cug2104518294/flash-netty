@@ -8,10 +8,10 @@ import the.flash.protocol.response.HeartBeatResponsePacket;
 
 @ChannelHandler.Sharable
 public class HeartBeatRequestHandler extends SimpleChannelInboundHandler<HeartBeatRequestPacket> {
+
     public static final HeartBeatRequestHandler INSTANCE = new HeartBeatRequestHandler();
 
     private HeartBeatRequestHandler() {
-
     }
 
     @Override

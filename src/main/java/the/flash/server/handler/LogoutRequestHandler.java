@@ -15,7 +15,6 @@ public class LogoutRequestHandler extends SimpleChannelInboundHandler<LogoutRequ
     public static final LogoutRequestHandler INSTANCE = new LogoutRequestHandler();
 
     private LogoutRequestHandler() {
-
     }
 
     @Override
