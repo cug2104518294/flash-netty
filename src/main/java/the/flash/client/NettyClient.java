@@ -17,9 +17,6 @@ import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-/**
- * @author 闪电侠
- */
 public class NettyClient {
     private static final int MAX_RETRY = 5;
     private static final String HOST = "127.0.0.1";

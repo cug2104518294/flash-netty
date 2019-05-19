@@ -37,14 +37,12 @@ public class NettyServer {
                         ch.pipeline().addLast(new InBoundHandlerA());
                         ch.pipeline().addLast(new InBoundHandlerB());
                         ch.pipeline().addLast(new InBoundHandlerC());
-
                         // outBound，处理写数据的逻辑链
                         ch.pipeline().addLast(new OutBoundHandlerA());
                         ch.pipeline().addLast(new OutBoundHandlerB());
                         ch.pipeline().addLast(new OutBoundHandlerC());
                     }
                 });
-
 
         bind(serverBootstrap, PORT);
     }

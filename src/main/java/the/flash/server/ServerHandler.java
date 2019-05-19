@@ -12,11 +12,6 @@ import the.flash.protocol.response.MessageResponsePacket;
 
 import java.util.Date;
 
-/**
- * @author chao.yu
- * chao.yu@dianping.com
- * @date 2018/08/04 06:21.
- */
 public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
