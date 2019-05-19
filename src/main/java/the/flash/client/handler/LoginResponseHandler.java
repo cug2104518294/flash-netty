@@ -9,6 +9,15 @@ import the.flash.util.LoginUtil;
 import java.util.Date;
 import java.util.UUID;
 
+
+/**
+ * 然后在 channelRead0() 方法里面，我们不用再通过 if 逻辑来判断当前对象是否是本 handler 可以处理的对象，
+ * 也不用强转，不用往下传递本 handler 处理不了的对象，
+ * 这一切都已经交给父类 SimpleChannelInboundHandler 来实现了，我们只需要专注于我们要处理的业务逻辑即可。
+ *
+ * 基于 SimpleChannelInboundHandler，我们可以实现每一种指令的处理，不再需要强转，不再有冗长乏味的 if else 逻辑，不需要手动传递对象。
+
+ * */
 public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginResponsePacket> {
 
     @Override
@@ -18,7 +27,6 @@ public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginRespo
         loginRequestPacket.setUserId(UUID.randomUUID().toString());
         loginRequestPacket.setUsername("flash");
         loginRequestPacket.setPassword("pwd");
-
         // 写数据
         ctx.channel().writeAndFlush(loginRequestPacket);
     }

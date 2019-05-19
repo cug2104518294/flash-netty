@@ -11,7 +11,6 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, LoginRequestPacket loginRequestPacket) {
         System.out.println(new Date() + ": 收到客户端登录请求……");
-
         LoginResponsePacket loginResponsePacket = new LoginResponsePacket();
         loginResponsePacket.setVersion(loginRequestPacket.getVersion());
         if (valid(loginRequestPacket)) {
@@ -22,7 +21,6 @@ public class LoginRequestHandler extends SimpleChannelInboundHandler<LoginReques
             loginResponsePacket.setSuccess(false);
             System.out.println(new Date() + ": 登录失败!");
         }
-
         // 登录响应
         ctx.channel().writeAndFlush(loginResponsePacket);
     }
