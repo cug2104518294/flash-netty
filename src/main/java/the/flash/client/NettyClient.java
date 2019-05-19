@@ -39,7 +39,6 @@ public class NettyClient {
                         ch.pipeline().addLast(new ClientHandler());
                     }
                 });
-
         connect(bootstrap, HOST, PORT, MAX_RETRY);
     }
 
@@ -63,6 +62,9 @@ public class NettyClient {
         });
     }
 
+    /**
+     * 在连接服务器成功以后就启动控制台功能   其实在此之前就已经markAsLogin
+     * */
     private static void startConsoleThread(Channel channel) {
         new Thread(() -> {
             while (!Thread.interrupted()) {
