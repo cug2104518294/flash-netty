@@ -18,7 +18,6 @@ public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginRespo
         loginRequestPacket.setUserId(UUID.randomUUID().toString());
         loginRequestPacket.setUsername("flash");
         loginRequestPacket.setPassword("pwd");
-
         // 写数据
         ctx.channel().writeAndFlush(loginRequestPacket);
     }

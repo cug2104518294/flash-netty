@@ -19,7 +19,6 @@ public class Spliter extends LengthFieldBasedFrameDecoder {
             ctx.channel().close();
             return null;
         }
-
         return super.decode(ctx, in);
     }
 }
