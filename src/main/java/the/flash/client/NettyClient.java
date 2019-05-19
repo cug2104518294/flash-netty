@@ -79,7 +79,6 @@ public class NettyClient {
                     System.out.println("输入消息发送至服务端: ");
                     Scanner sc = new Scanner(System.in);
                     String line = sc.nextLine();
-
                     channel.writeAndFlush(new MessageRequestPacket(line));
 //                }
             }
