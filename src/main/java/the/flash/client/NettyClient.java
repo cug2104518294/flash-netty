@@ -10,9 +10,6 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-/**
- * @author 闪电侠
- */
 public class NettyClient {
     private static final int MAX_RETRY = 5;
     private static final String HOST = "127.0.0.1";
@@ -35,7 +32,6 @@ public class NettyClient {
                         ch.pipeline().addLast(new FirstClientHandler());
                     }
                 });
-
         connect(bootstrap, HOST, PORT, MAX_RETRY);
     }
 
