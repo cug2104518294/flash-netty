@@ -29,7 +29,6 @@ public class ConsoleCommandManager implements ConsoleCommand {
         if (!SessionUtil.hasLogin(channel)) {
             return;
         }
-
         ConsoleCommand consoleCommand = consoleCommandMap.get(command);
         if (consoleCommand != null) {
             consoleCommand.exec(scanner, channel);

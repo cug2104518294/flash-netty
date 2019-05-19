@@ -11,9 +11,7 @@ import the.flash.util.SessionUtil;
 @ChannelHandler.Sharable
 public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<GroupMessageRequestPacket> {
     public static final GroupMessageRequestHandler INSTANCE = new GroupMessageRequestHandler();
-
     private GroupMessageRequestHandler() {
-
     }
 
     @Override
@@ -24,8 +22,6 @@ public class GroupMessageRequestHandler extends SimpleChannelInboundHandler<Grou
         responsePacket.setFromGroupId(groupId);
         responsePacket.setMessage(requestPacket.getMessage());
         responsePacket.setFromUser(SessionUtil.getSession(ctx.channel()));
-
-
         // 2. 拿到群聊对应的 channelGroup，写到每个客户端
         ChannelGroup channelGroup = SessionUtil.getChannelGroup(groupId);
         channelGroup.writeAndFlush(responsePacket);

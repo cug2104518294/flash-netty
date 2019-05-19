@@ -44,6 +44,8 @@ public class NettyServer {
                     protected void initChannel(NioSocketChannel ch) {
                         //空闲检测
                         ch.pipeline().addLast(new IMIdleStateHandler());
+                        //pipeline 中第一个 handler - Spliter，我们是无法动它的，因为他内部实现是与每个 channel 有关，
+                        // 每个 Spliter 需要维持每个 channel 当前读到的数据，也就是说他是有状态的。
                         ch.pipeline().addLast(new Spliter());
                         ch.pipeline().addLast(PacketCodecHandler.INSTANCE);
                         ch.pipeline().addLast(LoginRequestHandler.INSTANCE);
