@@ -12,7 +12,6 @@ public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginRespo
     protected void channelRead0(ChannelHandlerContext ctx, LoginResponsePacket loginResponsePacket) {
         String userId = loginResponsePacket.getUserId();
         String userName = loginResponsePacket.getUserName();
-
         if (loginResponsePacket.isSuccess()) {
             System.out.println("[" + userName + "]登录成功，userId 为: " + loginResponsePacket.getUserId());
             SessionUtil.bindSession(new Session(userId, userName), ctx.channel());

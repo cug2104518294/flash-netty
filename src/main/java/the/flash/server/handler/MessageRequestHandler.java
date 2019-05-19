@@ -13,7 +13,6 @@ public class MessageRequestHandler extends SimpleChannelInboundHandler<MessageRe
     protected void channelRead0(ChannelHandlerContext ctx, MessageRequestPacket messageRequestPacket) {
         // 1.拿到消息发送方的会话信息
         Session session = SessionUtil.getSession(ctx.channel());
-
         // 2.通过消息发送方的会话信息构造要发送的消息
         MessageResponsePacket messageResponsePacket = new MessageResponsePacket();
         messageResponsePacket.setFromUserId(session.getUserId());

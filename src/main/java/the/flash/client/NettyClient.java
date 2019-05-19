@@ -21,9 +21,6 @@ import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-/**
- * @author 闪电侠
- */
 public class NettyClient {
     private static final int MAX_RETRY = 5;
     private static final String HOST = "127.0.0.1";
@@ -77,17 +74,14 @@ public class NettyClient {
     private static void startConsoleThread(Channel channel) {
         Scanner sc = new Scanner(System.in);
         LoginRequestPacket loginRequestPacket = new LoginRequestPacket();
-
         new Thread(() -> {
             while (!Thread.interrupted()) {
                 if (!SessionUtil.hasLogin(channel)) {
                     System.out.print("输入用户名登录: ");
                     String username = sc.nextLine();
                     loginRequestPacket.setUserName(username);
-
                     // 密码使用默认的
                     loginRequestPacket.setPassword("pwd");
-
                     // 发送登录数据包
                     channel.writeAndFlush(loginRequestPacket);
                     waitForLoginResponse();
