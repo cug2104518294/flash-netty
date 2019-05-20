@@ -27,6 +27,8 @@ public class FirstClientHandler extends ChannelInboundHandlerAdapter {
         return buffer;
     }
 
+    //channelRead() 方法读取数据后，需要调用ByteBuf的release()方法吗
+    //要调用的，这小节不涉及内存相关的知识，没放到这里讲
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         ByteBuf byteBuf = (ByteBuf) msg;
