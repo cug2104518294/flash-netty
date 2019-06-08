@@ -13,11 +13,6 @@ import the.flash.util.LoginUtil;
 import java.util.Date;
 import java.util.UUID;
 
-/**
- * @author chao.yu
- * chao.yu@dianping.com
- * @date 2018/08/04 06:23.
- */
 public class ClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
