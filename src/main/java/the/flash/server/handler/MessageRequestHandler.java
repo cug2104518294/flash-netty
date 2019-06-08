@@ -2,6 +2,7 @@ package the.flash.server.handler;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.handler.codec.ByteToMessageDecoder;
 import the.flash.protocol.request.MessageRequestPacket;
 import the.flash.protocol.response.MessageResponsePacket;
 
